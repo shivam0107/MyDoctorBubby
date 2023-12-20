@@ -25,7 +25,7 @@ const navLinks = [
   },
 ];
 
-function Header() {
+const Header =() => {5
 
   const headerRef = useRef(null);
   const menuRef = useRef(null);
@@ -45,15 +45,11 @@ function Header() {
 
   useEffect(() => {
     handelStickyHeader()
-    return () => {
-      window.removeEventListener('scroll', handelStickyHeader);
-    }
+    return () => window.removeEventListener('scroll', handelStickyHeader);
+    
   })
   
-  const toggleMenu = () => {
-    menuRef.current.classList.toggle('show__menu');
-
-  }
+  const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
 
   return (
     <header className="header flex items-center" ref={headerRef}>
@@ -91,7 +87,6 @@ function Header() {
                 <figure className='w-[35px] h-[35px] rounded-full cursor-pointer' >
                   <img src={userImg} alt='' className='w-full rounded-full '></img>
                 </figure>
-
               </Link>
             </div>
 
