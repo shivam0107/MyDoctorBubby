@@ -11,6 +11,7 @@ import {Routes , Route} from "react-router-dom"
 import MyAccount from '../Dashboard/user-account/MyAccount';
 import Dashboard from '../Dashboard/doctor-account/Dashboard';
 import ProtectedRoute from './ProtectedRoute';
+import BookAppointment from '../pages/BookAppointment';
 
 function Routers() {
   return (
@@ -21,6 +22,7 @@ function Routers() {
       <Route path="/doctors/:id" element={<DoctorDetails />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Signup />} />
+      <Route path="/bookAppointment" element={<BookAppointment />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/services" element={<Services />} />
       <Route
@@ -34,7 +36,7 @@ function Routers() {
       <Route
         path="/doctors/profile/me"
         element={
-          <ProtectedRoute allowedRoles={['doctor']} >
+          <ProtectedRoute allowedRoles={["doctor"]}>
             <Dashboard />
           </ProtectedRoute>
         }

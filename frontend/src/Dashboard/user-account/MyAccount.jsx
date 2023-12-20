@@ -1,33 +1,36 @@
 import { useContext, useState } from "react";
 import userImg from "../../assets/images/doctor-img01.png";
-import { authContext } from "./../../context/authContext";
+import  AuthContext from "../../context/AuthContext";
 
 import MyBookings from "./MyBookings";
-import Profile from "./Profile"
+import Profile from "./Profile";
 
-import useGetProfile from '../../hooks/useFetchData'
+import useGetProfile from "../../hooks/useFetchData";
 import { BASE_URL } from "../../config";
 
 import Loading from "../../components/Loader/Loading";
 import Error from "../../components/Error/Error";
 
 function MyAccount() {
-  const { dispatch } = useContext(authContext);
-    const [tab, setTab] = useState("bookings");
-    
-    const {data:userData, loading, error} = useGetProfile(`${BASE_URL}/users/profiles/me`)
-    console.log(userData , "userdata")
+  const { dispatch } = useContext(AuthContext);
+  const [tab, setTab] = useState("bookings");
 
-    const handelLogout = () => {
+  const {
+    data: userData,
+    loading,
+    error,
+  } = useGetProfile(`${BASE_URL}/users/profiles/me`);
+  console.log(userData, "userdata");
+
+  const handelLogout = () => {
     dispatch({ type: LOGOUT });
   };
 
   return (
     <section>
-          <div className="max-w-[1170px] px-5 mx-auto">
-              
-              {loading && !error && <Loading />}
-              {error && !loading && <Error errMessage={error} />}
+      <div className="max-w-[1170px] px-5 mx-auto">
+        {loading && !error && <Loading />}
+        {error && !loading && <Error errMessage={error} />}
 
         {!loading && !error && (
           <div className="grid md:grid-cols-3 gap-10">
@@ -82,8 +85,8 @@ function MyAccount() {
                 </button>
               </div>
 
-              {(tab = "bookings" && <MyBookings />)}
-              {(tab = "settings" && <Profile />)}
+              {(tab === "bookings" && <MyBookings />)}
+              {(tab === "settings" && <Profile />)}
             </div>
           </div>
         )}

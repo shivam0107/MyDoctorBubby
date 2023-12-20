@@ -1,11 +1,19 @@
 import React from 'react'
 import starIcon from '../../assets/images/Star.png';
 import { FaArrowRightLong } from "react-icons/fa6";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 //  import {doctors} from './../../assts/data/doctors';
 
- const DoctorCard = ({doctor}) =>{
+const DoctorCard = ({ doctor }) => {
+    const navigate = useNavigate();
+     
+    function clickHandler(){
+        navigate('/bookAppointment');
+    }
+
+
     const {name, avgRating, totalRating, photo, specialization, totalPatients, hospital} = doctor;
     return (
         <div className='p-3 lg:p-5 '>
@@ -38,9 +46,9 @@ import {Link} from 'react-router-dom';
                     <p className='text-[14px] leading-6 font-[400] text-textColor'>At {hospital}</p>
                 </div>
 
-                <Link to='/doctors' className='w-[44px] h-[44px] rounded-full border border-solid border-[#18u1A1E] flex items-center justify-center group hover:bg-primaryColor hover:border-none'>
-                <FaArrowRightLong className="group-hover:text-black w-6 h-5" />
-              </Link>
+            
+                <button onClick={clickHandler} className='p-2 m-2 bg-slate-500 text-white rounded-md border'>BookAppointment</button>
+           
 
             </div>
 

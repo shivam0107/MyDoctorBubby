@@ -15,8 +15,17 @@ import About from '../components/About/About'
 import ServiceList from '../components/Services/ServiceList'
 import DoctorList from '../components/Doctors/DoctorList'
 import FaqList  from '../components/Faq/FaqList'
+import { useNavigate } from 'react-router-dom'
+
 
 function Home() {
+
+const navigate = useNavigate();
+
+function clickHandler() {
+  navigate("/doctors");
+}
+
   return (<>
    {/* ============hero section======= */}
    
@@ -31,7 +40,7 @@ function Home() {
                 </h1>
                 <p className="text_para">MyDoctorBuddy - Your Partner for Healthier Tomorrow</p>
 
-                <button className='btn'>Request an Appointment</button>
+                <button onClick={clickHandler} className='btn'>Request an Appointment</button>
             </div>
 
             {/* ===========hero counter============ */}

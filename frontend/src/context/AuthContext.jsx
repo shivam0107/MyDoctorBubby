@@ -6,9 +6,9 @@ const initialstate = {
   token: null,
 };
 
-const authContext = createContext(initialstate);
+const AuthContext = createContext(initialstate);
 
-const authReducer = (state, action) => {
+const AuthReducer = (state, action) => {
   switch (action.type) {
     case `LOGIN_START`:
       return {
@@ -37,18 +37,21 @@ const authReducer = (state, action) => {
 };
 
 export const AuthContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, initialstate);
+  const [state, dispatch] = useReducer(AuthReducer, initialstate);
 
   return (
-    <authContext.Provider
+    <AuthContext.Provider
       value={{
         user: state.user,
         token: state.token,
         role: state.role,
         dispatch,
       }}
-    >
+      >
       {children}
-    </authContext.Provider>
+    </AuthContext.Provider>
   );
 };
+
+
+export default AuthContext
